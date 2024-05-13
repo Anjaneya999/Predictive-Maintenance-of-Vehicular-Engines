@@ -4,4 +4,4 @@ A cloud enabled dashboard to predict the condition of a vehicular engine based o
 
 
 # Website 
-You can access the website here \href{http://ec2-16-171-153-32.eu-north-1.compute.amazonaws.com:8080/}{Dashboard}
+You can access the website here [Dashboard](http://ec2-16-171-153-32.eu-north-1.compute.amazonaws.com:8080/)
