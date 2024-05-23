@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predictive Maintenance</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .main-heading {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 30px; /* Increased font size */
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .instruction {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px; /* Increased font size */
+        }
+        hr {
+            margin: 20px auto;
+            width: 80%;
+            border: 1px solid #000;
+        }
+        .form-column {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .form-column > div {
+            margin-right: 10px;
+            width: 45%;
+        }
+        form {
+            /*border: 1px solid #000;*/ /* Remove the black outline */
+            padding: 20px;
+            width: 80%;
+            margin: 0 auto 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        form label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            width: 50%;
+            padding: 10px;
+            margin: 20px auto;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .result-container {
+            margin-top: 20px;
+            border: 1px solid #000;
+            padding: 10px;
+            width: 50%;
+            margin: 20px auto 0;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+        .result-container h3 {
+            font-size: 20px;
+        }
+        .result-container p {
+            font-size: 18px; /* Increased font size for resultant messages */
+        }
+    </style>
+</head>
+<body>
+    <h1 class="main-heading">Predictive Maintenance of Vehicular Engines</h1>
+    <hr>
+    <p class="instruction">Enter details relating to your vehicle and find out the CO2 emissions released and its current state!</p>
+    <form method='post' action="/predict">
+        <div class="form-column">
+            <div>
+                <label for="Make">Vehicle Manufacturer:</label>
+                <input type="text" id="Make" name="Make">
+
+                <label for="Model">Vehicle Model:</label>
+                <input type="text" id="Model" name="Model">
+
+                <label for="Vehicle Class">Vehicle Class:</label>
+                <input type="text" id="Vehicle Class" name="Vehicle Class">
+
+                <label for="Engine Size(L)">Engine Size:</label>
+                <input type="number" id="Engine Size(L)" name="Engine Size(L)">
+
+                <label for="Cylinders">Number of Cylinders:</label>
+                <input type="number" id="Cylinders" name="Cylinders" min="1" max="12">
+            </div>
+            <div>
+                <label for="Transmission">Transmission:</label>
+                <input type="text" id="Transmission" name="Transmission" min="1" max="12">
+
+                <label for="Fuel Type">Fuel Type:</label>
+                <input type="text" id="Fuel Type" name="Fuel Type" min="1" max="12">
+
+                <label for="Fuel Consumption City (L/100 km)">Fuel Consumption City (L/100km):</label>
+                <input type="number" id="Fuel Consumption City (L/100 km)" name="Fuel Consumption City (L/100 km)">
+
+                <label for="Fuel Consumption Hwy (L/100 km)">Fuel Consumption Hwy (L/100km):</label>
+                <input type="number" id="Fuel Consumption Hwy (L/100 km)" name="Fuel Consumption Hwy (L/100 km)">
+
+                <label for="Fuel Consumption Comb (L/100 km)">Fuel Consumption Comb (L/100km):</label>
+                <input type="number" id="Fuel Consumption Comb (L/100 km)" name="Fuel Consumption Comb (L/100 km)">
+
+                <label for="Fuel Consumption Comb (mpg)">Fuel Consumption Comb (mpg):</label>
+                <input type="number" id="Fuel Consumption Comb (mpg)" name="Fuel Consumption Comb (mpg)">
+            </div>
+        </div>
+        <input type="submit" value="Predict">
+    </form>
+    <div class="result-container">
+        <h3>CO2 Emissions (g/km):</h3>
+        <p>{{ result }}</p>
+        <h3>Message for User:</h3>
+        <p>{{ classified }}</p>
+    </div>
+</body>
+</html>
